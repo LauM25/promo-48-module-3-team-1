@@ -1,4 +1,7 @@
 import "../scss/App.scss";
+// import logoAdalab from "../images/adalab.png";
+
+
 
 function App() {
   return (
