@@ -1,5 +1,6 @@
 import "../scss/App.scss";
-// import logoAdalab from "../images/adalab.png";
+import logoAdalab from "../images/adalab.png";
+import companyLogo from "../images/laptop-code-solid.svg";
 
 
 
@@ -15,14 +16,14 @@ function App() {
           >
             <img
               className="header__companyLogo"
-              src="./images/laptop-code-solid.svg"
+              src={companyLogo}
               alt="Logo proyectos molones"
             />
             <h1 className="header__title">Proyectos molones</h1>
           </a>
           <img
             className="logoSponsor"
-            src="./images/adalab.png"
+            src={logoAdalab}
             alt="Logo Adalab"
           />
         </header>
@@ -184,7 +185,7 @@ function App() {
         <footer className="footer">
           <img
             className="logoSponsor"
-            src="./images/adalab.png"
+            src={logoAdalab}
             alt="Logo Adalab"
           />
         </footer>
