@@ -1,10 +1,44 @@
 import "../scss/App.scss";
 import logoAdalab from "../images/adalab.png";
 import companyLogo from "../images/laptop-code-solid.svg";
+import { useState } from "react";
 
-
+//inputs
 
 function App() {
+  const [projectName, setProjectName] = useState("");
+  const [projectSlogan, setProjectSlogan] = useState("");
+  const [projectRepository, setProjectRepository] = useState("");
+  const [projectDemo, setProjectDemo] = useState("");
+  const [projectTechnologies, setProjectTechnologies] = useState("");
+  const [projectDescription, setProjectDescription] = useState("");
+  const [userName, setUserName] = useState("");
+  const [userJob, setUserJob] = useState("");
+
+  const handleChangeProjectName = (event) => {
+    setProjectName(event.target.value);
+  };
+  const handleChangeProjectSlogan = (event) => {
+    setProjectSlogan(event.target.value);
+  };
+  const handleChangeProjectRepository = (event) => {
+    setProjectRepository(event.target.value);
+  };
+  const handleChangeProjectDemo = (event) => {
+    setProjectDemo(event.target.value);
+  };
+  const handleChangeProjectTechnologies = (event) => {
+    setProjectTechnologies(event.target.value);
+  };
+  const handleChangeProjectDescription = (event) => {
+    setProjectDescription(event.target.value);
+  };
+  const handleChangeUserName = (event) => {
+    setUserName(event.target.value);
+  };
+  const handleChangeUserJob = (event) => {
+    setUserJob(event.target.value);
+  };
   return (
     <>
       <div className="container">
@@ -21,11 +55,7 @@ function App() {
             />
             <h1 className="header__title">Proyectos molones</h1>
           </a>
-          <img
-            className="logoSponsor"
-            src={logoAdalab}
-            alt="Logo Adalab"
-          />
+          <img className="logoSponsor" src={logoAdalab} alt="Logo Adalab" />
         </header>
 
         <main className="main">
@@ -50,33 +80,40 @@ function App() {
 
               <div className="card__author">
                 <div className="card__authorPhoto"></div>
-                <p className="card__job">Full stack Developer</p>
-                <h3 className="card__name">Emmelie Bjôrklund</h3>
+                <p className="card__job">{userJob || "Full stack Developer"}</p>
+                <h3 className="card__name">
+                  {userName || "Emmelie Bjôrklund"}
+                </h3>
               </div>
 
               <div className="card__project">
-                <h3 className="card__name">Elegant Workspace</h3>
-                <p className="card__slogan">Diseños Exclusivos</p>
-                <h3 className="card__descriptionTitle">Product description</h3>
+                <h3 className="card__name">
+                  {projectName || "Elegant Workspace"}
+                </h3>
+                <p className="card__slogan">
+                  {projectSlogan || "Diseños exclusivos"}
+                </p>
+                <h3 className="card__descriptionTitle">Product Description</h3>
                 <p className="card__description">
-                  Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-                  Nulla, quos? Itaque, molestias eveniet laudantium adipisci
-                  vitae ratione
+                  {projectDescription ||
+                    "Tiene musho peligro caballo blanco caballo negroorl te voy a borrar el cerito está la cosa muy malar qué dise usteer llevame al sircoo."}
                 </p>
 
                 <div className="card__technicalInfo">
-                  <p className="card__technologies">React JS - HTML - CSS</p>
+                  <p className="card__technologies">
+                    {projectTechnologies || "React JS - HTML - CSS"}
+                  </p>
 
                   <a
                     className="icon icon__www"
-                    href="#"
+                    href={projectDemo}
                     title="Haz click para ver el proyecto online"
                   >
                     Web link
                   </a>
                   <a
                     className="icon icon__github"
-                    href="#"
+                    href={projectRepository}
                     title="Haz click para ver el código del proyecto"
                   >
                     GitHub link
@@ -94,6 +131,7 @@ function App() {
               <input
                 className="addForm__input"
                 type="text"
+                onChange={handleChangeProjectName}
                 name="name"
                 id="name"
                 placeholder="Nombre del proyecto"
@@ -101,6 +139,7 @@ function App() {
               <input
                 className="addForm__input"
                 type="text"
+                onChange={handleChangeProjectSlogan}
                 name="slogan"
                 id="slogan"
                 placeholder="Slogan"
@@ -109,6 +148,7 @@ function App() {
                 <input
                   className="addForm__input"
                   type="url"
+                  onChange={handleChangeProjectRepository}
                   name="repo"
                   id="repo"
                   placeholder="Repositorio"
@@ -116,6 +156,7 @@ function App() {
                 <input
                   className="addForm__input"
                   type="url"
+                  onChange={handleChangeProjectDemo}
                   name="demo"
                   id="demo"
                   placeholder="Demo"
@@ -124,6 +165,7 @@ function App() {
               <input
                 className="addForm__input"
                 type="text"
+                onChange={handleChangeProjectTechnologies}
                 name="technologies"
                 id="technologies"
                 placeholder="Tecnologías"
@@ -131,6 +173,7 @@ function App() {
               <textarea
                 className="addForm__input"
                 type="text"
+                onChange={handleChangeProjectDescription}
                 name="desc"
                 id="desc"
                 placeholder="Descripción"
@@ -145,6 +188,7 @@ function App() {
               <input
                 className="addForm__input"
                 type="text"
+                onChange={handleChangeUserName}
                 name="autor"
                 id="autor"
                 placeholder="Nombre"
@@ -152,6 +196,7 @@ function App() {
               <input
                 className="addForm__input"
                 type="text"
+                onChange={handleChangeUserJob}
                 name="job"
                 id="job"
                 placeholder="Trabajo"
@@ -183,11 +228,7 @@ function App() {
         </main>
 
         <footer className="footer">
-          <img
-            className="logoSponsor"
-            src={logoAdalab}
-            alt="Logo Adalab"
-          />
+          <img className="logoSponsor" src={logoAdalab} alt="Logo Adalab" />
         </footer>
       </div>
     </>
