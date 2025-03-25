@@ -1,19 +1,19 @@
 import "../scss/App.scss";
-import logoAdalab from "../images/adalab.png";
-import companyLogo from "../images/laptop-code-solid.svg";
 import { useState } from "react";
+import Header from "./Header";
+import Footer from "./Footer";
 
 //inputs
 
 function App() {
-  const [projectName, setProjectName] = useState("");
-  const [projectSlogan, setProjectSlogan] = useState("");
+  const [projectName, setProjectName] = useState("Elegant Workspace");
+  const [projectSlogan, setProjectSlogan] = useState("Diseños exclusivos");
   const [projectRepository, setProjectRepository] = useState("");
   const [projectDemo, setProjectDemo] = useState("");
-  const [projectTechnologies, setProjectTechnologies] = useState("");
-  const [projectDescription, setProjectDescription] = useState("");
-  const [userName, setUserName] = useState("");
-  const [userJob, setUserJob] = useState("");
+  const [projectTechnologies, setProjectTechnologies] = useState("React JS - HTML - CSS");
+  const [projectDescription, setProjectDescription] = useState("Tiene musho peligro caballo blanco caballo negroorl te voy a borrar el cerito está la cosa muy malar qué dise usteer llevame al sircoo.");
+  const [userName, setUserName] = useState("Emmelie Bjôrklund");
+  const [userJob, setUserJob] = useState("Full stack Developer");
 
   const handleChangeProjectName = (event) => {
     setProjectName(event.target.value);
@@ -42,21 +42,7 @@ function App() {
   return (
     <>
       <div className="container">
-        <header className="header">
-          <a
-            className="header__brand"
-            href="./"
-            title="Haz click para volver a la página inicial"
-          >
-            <img
-              className="header__companyLogo"
-              src={companyLogo}
-              alt="Logo proyectos molones"
-            />
-            <h1 className="header__title">Proyectos molones</h1>
-          </a>
-          <img className="logoSponsor" src={logoAdalab} alt="Logo Adalab" />
-        </header>
+       <Header/>
 
         <main className="main">
           <section className="hero">
@@ -80,28 +66,27 @@ function App() {
 
               <div className="card__author">
                 <div className="card__authorPhoto"></div>
-                <p className="card__job">{userJob || "Full stack Developer"}</p>
+                <p className="card__job">{userJob}</p>
                 <h3 className="card__name">
-                  {userName || "Emmelie Bjôrklund"}
+                  {userName}
                 </h3>
               </div>
 
               <div className="card__project">
                 <h3 className="card__name">
-                  {projectName || "Elegant Workspace"}
+                  {projectName}
                 </h3>
                 <p className="card__slogan">
-                  {projectSlogan || "Diseños exclusivos"}
+                  {projectSlogan}
                 </p>
                 <h3 className="card__descriptionTitle">Product Description</h3>
                 <p className="card__description">
-                  {projectDescription ||
-                    "Tiene musho peligro caballo blanco caballo negroorl te voy a borrar el cerito está la cosa muy malar qué dise usteer llevame al sircoo."}
+                  {projectDescription}
                 </p>
 
                 <div className="card__technicalInfo">
                   <p className="card__technologies">
-                    {projectTechnologies || "React JS - HTML - CSS"}
+                    {projectTechnologies}
                   </p>
 
                   <a
@@ -227,9 +212,7 @@ function App() {
           </form>
         </main>
 
-        <footer className="footer">
-          <img className="logoSponsor" src={logoAdalab} alt="Logo Adalab" />
-        </footer>
+       <Footer/>
       </div>
     </>
   );
