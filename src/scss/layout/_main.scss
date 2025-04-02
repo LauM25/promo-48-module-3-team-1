@@ -124,11 +124,12 @@ fieldset {
 .preview .projectImage {
     width: 100%;
     aspect-ratio: 1 / 1;
-    outline: solid 1px pink;
+    img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
 
-    background-image: url('../images/ebook-example.jpg');
-    background-position: top center;
-    background-size: cover;
 }
 
 .preview .card {

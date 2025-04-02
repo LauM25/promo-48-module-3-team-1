@@ -8,21 +8,14 @@ import Preview from "./Preview";
 //inputs
 
 function App() {
-  /*const [projectName, setProjectName] = useState("Elegant Workspace");
-  const [projectSlogan, setProjectSlogan] = useState("Diseños exclusivos");
-  const [projectRepository, setProjectRepository] = useState("");
-  const [projectDemo, setProjectDemo] = useState("");
-  const [projectTechnologies, setProjectTechnologies] = useState(
-    "React JS - HTML - CSS"
-  );
-  const [projectDescription, setProjectDescription] = useState(
-    "Tiene musho peligro caballo blanco caballo negroorl te voy a borrar el cerito está la cosa muy malar qué dise usteer llevame al sircoo."
-  );
-  const [userName, setUserName] = useState("Emmelie Bjôrklund");
-  const [userJob, setUserJob] = useState("Full stack Developer");
-  */
+  /* const [avatar, setAvatar] = useState("");
+  const updateAvatar = (avatar) => {
+    setAvatar(avatar);
+  }; */
 
   const [projectInfo, setProjectInfo] = useState({
+    projectImgAuthor: "",
+    projectImgProject: "",
     projectName: "Elegant Workspace",
     projectSlogan: "Diseños exclusivos",
     projectDescription:
@@ -33,6 +26,12 @@ function App() {
     userName: "Emmelie Bjôrklund",
     userJob: "Full stack Developer",
   });
+  const hadleChangeImageProject = (value) => {
+    setProjectInfo({
+      ...projectInfo,
+      projectImgProject: value,
+    });
+  };
 
   const handleChangeProjectName = (value) => {
     setProjectInfo({
@@ -107,6 +106,7 @@ function App() {
 
           <Preview project={projectInfo} />
           <Form
+            onInputProjectImage={hadleChangeImageProject}
             onInputProjectName={handleChangeProjectName}
             onInputProjectSlogan={handleChangeProjectSlogan}
             onInputProjectRepository={handleChangeProjectRepository}

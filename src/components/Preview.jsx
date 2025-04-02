@@ -1,8 +1,14 @@
+import imgProject from "../images/ebook-example.jpg";
 function Preview({ project }) {
   //   console.log(project);
   return (
     <section className="preview">
-      <div className="projectImage"></div>
+      <div className="projectImage">
+        <img
+          src={project.projectImgProject || imgProject}
+          alt={project.projectName}
+        />
+      </div>
       <article className="card">
         <h2 className="card__projectTitle">
           <span className="card__projectTitle--text">
