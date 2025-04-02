@@ -14,85 +14,98 @@ function App() {
   }; */
 
   const [projectInfo, setProjectInfo] = useState({
-    projectImgAuthor: "",
-    projectImgProject: "",
-    projectName: "Elegant Workspace",
-    projectSlogan: "Diseños exclusivos",
-    projectDescription:
+    photo: "",
+    image: "",
+    name: "Elegant Workspace",
+    slogan: "Diseños exclusivos",
+    desc:
       "Tiene musho peligro caballo blanco caballo negroorl te voy a borrar el cerito está la cosa muy malar qué dise usteer llevame al sircoo.",
-    projectRepository: "",
-    projectDemo: "",
-    projectTechnologies: "React JS - HTML - CSS",
-    userName: "Emmelie Bjôrklund",
-    userJob: "Full stack Developer",
+    repo: "",
+    demo: "",
+    technologies: "React JS - HTML - CSS",
+    autor: "Emmelie Bjôrklund",
+    job: "Full stack Developer",
   });
   const handleChangeImageAuthor = (value) => {
     setProjectInfo({
       ...projectInfo,
-      projectImgAuthor: value,
+      photo: value,
     });
   };
   const handleChangeImageProject = (value) => {
     setProjectInfo({
       ...projectInfo,
-      projectImgProject: value,
+      image: value,
     });
   };
 
   const handleChangeProjectName = (value) => {
     setProjectInfo({
       ...projectInfo,
-      projectName: value,
+      name: value,
     });
   };
 
   const handleChangeProjectSlogan = (value) => {
     setProjectInfo({
       ...projectInfo,
-      projectSlogan: value,
+      slogan: value,
     });
   };
 
   const handleChangeProjectRepository = (value) => {
     setProjectInfo({
       ...projectInfo,
-      projectRepository: value,
+      repo: value,
     });
   };
 
   const handleChangeProjectDemo = (value) => {
     setProjectInfo({
       ...projectInfo,
-      projectDemo: value,
+      demo: value,
     });
   };
 
   const handleChangeProjectTechnologies = (value) => {
     setProjectInfo({
       ...projectInfo,
-      projectTechnologies: value,
+      technologies: value,
     });
   };
 
   const handleChangeProjectDescription = (value) => {
     setProjectInfo({
       ...projectInfo,
-      projectDescription: value,
+      desc: value,
     });
   };
 
   const handleChangeUserName = (value) => {
     setProjectInfo({
       ...projectInfo,
-      userName: value,
+      autor: value,
     });
   };
   const handleChangeUserJob = (value) => {
     setProjectInfo({
       ...projectInfo,
-      userJob: value,
+      job: value,
     });
   };
+  const handleSubmitProject = () => {
+    fetch("https://dev.adalab.es/api/projectCard", {
+      method: "POST",
+      headers: {
+        "Content-type": "application/json",
+        body: JSON.stringify(projectInfo),
+      }
+    })
+      .then(res => res.json)
+      .then(data => {
+        console.log(data);
+      })
+  }
 
   return (
     <>
@@ -122,6 +135,7 @@ function App() {
             onInputProjectDescription={handleChangeProjectDescription}
             onInputUserName={handleChangeUserName}
             onInputUserJob={handleChangeUserJob}
+            onSaveProject={handleSubmitProject}
           />
         </main>
 
