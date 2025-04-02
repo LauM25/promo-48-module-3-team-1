@@ -26,7 +26,13 @@ function App() {
     userName: "Emmelie Bjôrklund",
     userJob: "Full stack Developer",
   });
-  const hadleChangeImageProject = (value) => {
+  const handleChangeImageAuthor = (value) => {
+    setProjectInfo({
+      ...projectInfo,
+      projectImgAuthor: value,
+    });
+  };
+  const handleChangeImageProject = (value) => {
     setProjectInfo({
       ...projectInfo,
       projectImgProject: value,
@@ -106,7 +112,8 @@ function App() {
 
           <Preview project={projectInfo} />
           <Form
-            onInputProjectImage={hadleChangeImageProject}
+            onInputAuthorImage={handleChangeImageAuthor}
+            onInputProjectImage={handleChangeImageProject}
             onInputProjectName={handleChangeProjectName}
             onInputProjectSlogan={handleChangeProjectSlogan}
             onInputProjectRepository={handleChangeProjectRepository}

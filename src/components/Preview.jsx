@@ -1,4 +1,5 @@
 import imgProject from "../images/ebook-example.jpg";
+import imgAuthor from "../images/avatar.webp";
 function Preview({ project }) {
   //   console.log(project);
   return (
@@ -9,6 +10,7 @@ function Preview({ project }) {
           alt={project.projectName}
         />
       </div>
+
       <article className="card">
         <h2 className="card__projectTitle">
           <span className="card__projectTitle--text">
@@ -17,7 +19,12 @@ function Preview({ project }) {
         </h2>
 
         <div className="card__author">
-          <div className="card__authorPhoto"></div>
+          <div className="card__authorPhoto">
+            <img
+              src={project.projectImgAuthor || imgAuthor}
+              alt={project.userName}
+            />
+          </div>
           <p className="card__job">
             {project.userJob || "Full stack Developer"}
           </p>

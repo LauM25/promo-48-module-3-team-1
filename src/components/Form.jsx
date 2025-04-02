@@ -28,6 +28,9 @@ function Form(props) {
   const handleChangeImgProject = (avatar) => {
     props.onInputProjectImage(avatar);
   };
+  const handleChangeImgAuthor = (avatar) => {
+    props.onInputAuthorImage(avatar);
+  };
 
   return (
     <form className="addForm">
@@ -112,7 +115,10 @@ function Form(props) {
           text="Subir foto del proyecto"
           updateAvatar={handleChangeImgProject}
         />
-        <GetAvatar text="Subir foto de la autora" />
+        <GetAvatar
+          text="Subir foto de la autora"
+          updateAvatar={handleChangeImgAuthor}
+        />
         <button className="button--large">Guardar proyecto</button>
       </fieldset>
     </form>
