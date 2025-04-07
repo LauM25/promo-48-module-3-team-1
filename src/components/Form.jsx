@@ -34,9 +34,7 @@ function Form(props) {
   const handleSaveProject = (event) => {
     event.preventDefault();
     props.onSaveProject();
-    
-  }
-
+  };
 
   return (
     <form className="addForm">
@@ -50,6 +48,7 @@ function Form(props) {
           name="name"
           id="name"
           placeholder="Nombre del proyecto"
+          value={props.projectInfo.name}
         />
         <input
           className="addForm__input"
@@ -58,6 +57,7 @@ function Form(props) {
           name="slogan"
           id="slogan"
           placeholder="Slogan"
+          value={props.projectInfo.slogan}
         />
         <div className="addForm__2col">
           <input
@@ -66,7 +66,8 @@ function Form(props) {
             onChange={handleChangePrRepository}
             name="repo"
             id="repo"
-            placeholder="Repositorio"
+            placeholder="https://github.com/nombre-repo"
+            value={props.projectInfo.repo}
           />
           <input
             className="addForm__input"
@@ -74,7 +75,8 @@ function Form(props) {
             onChange={handleChangePrDemo}
             name="demo"
             id="demo"
-            placeholder="Demo"
+            placeholder="https://nombre-proyecto.com"
+            value={props.projectInfo.demo}
           />
         </div>
         <input
@@ -84,6 +86,7 @@ function Form(props) {
           name="technologies"
           id="technologies"
           placeholder="Tecnologías"
+          value={props.projectInfo.technologies}
         />
         <textarea
           className="addForm__input"
@@ -92,6 +95,7 @@ function Form(props) {
           name="desc"
           id="desc"
           placeholder="Descripción"
+          value={props.projectInfo.desc}
           rows="5"
         ></textarea>
       </fieldset>
@@ -105,6 +109,7 @@ function Form(props) {
           name="autor"
           id="autor"
           placeholder="Nombre"
+          value={props.projectInfo.autor}
         />
         <input
           className="addForm__input"
@@ -113,6 +118,7 @@ function Form(props) {
           name="job"
           id="job"
           placeholder="Trabajo"
+          value={props.projectInfo.job}
         />
       </fieldset>
 
@@ -120,13 +126,29 @@ function Form(props) {
         <GetAvatar
           text="Subir foto del proyecto"
           updateAvatar={handleChangeImgProject}
+          avatar={props.projectInfo.image}
         />
         <GetAvatar
           text="Subir foto de la autora"
           updateAvatar={handleChangeImgAuthor}
+          avatar={props.projectInfo.photo}
         />
-        <button className="button--large" onClick={handleSaveProject} >Guardar proyecto</button>
+        <button className="button--large" onClick={handleSaveProject}>
+          Guardar proyecto
+        </button>
       </fieldset>
+      <div className="link-project">
+        {/* Renderizar el enlace solo si isLinkVisible es true */}
+        {props.isLinkVisible && (
+          <a
+            href={props.urlProject.cardURL}
+            target="_blank"
+            className="button-link"
+          >
+            Accede a tu tarjeta
+          </a>
+        )}
+      </div>
     </form>
   );
 }

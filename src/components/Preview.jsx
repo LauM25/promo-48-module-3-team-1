@@ -1,14 +1,12 @@
 import imgProject from "../images/ebook-example.jpg";
 import imgAuthor from "../images/avatar.webp";
+
 function Preview({ project }) {
   //   console.log(project);
   return (
     <section className="preview">
       <div className="projectImage">
-        <img
-          src={project.image || imgProject}
-          alt={project.name}
-        />
+        <img src={project.image || imgProject} alt={project.name} />
       </div>
 
       <article className="card">
@@ -20,23 +18,14 @@ function Preview({ project }) {
 
         <div className="card__author">
           <div className="card__authorPhoto">
-            <img
-              src={project.photo || imgAuthor}
-              alt={project.autor}
-            />
+            <img src={project.photo || imgAuthor} alt={project.autor} />
           </div>
-          <p className="card__job">
-            {project.job || "Full stack Developer"}
-          </p>
-          <h3 className="card__name">
-            {project.autor || "Emmelie Bjôrklund"}
-          </h3>
+          <p className="card__job">{project.job || "Full stack Developer"}</p>
+          <h3 className="card__name">{project.autor || "Emmelie Bjôrklund"}</h3>
         </div>
 
         <div className="card__project">
-          <h3 className="card__name">
-            {project.name || "Elegant Workspace"}
-          </h3>
+          <h3 className="card__name">{project.name || "Elegant Workspace"}</h3>
           <p className="card__slogan">
             {project.slogan || "Diseños exclusivos"}
           </p>
@@ -54,6 +43,7 @@ function Preview({ project }) {
             <a
               className="icon icon__www"
               href={project.demo}
+              target="_blank"
               title="Haz click para ver el proyecto online"
             >
               Web link
@@ -61,6 +51,7 @@ function Preview({ project }) {
             <a
               className="icon icon__github"
               href={project.repo}
+              target="_blank"
               title="Haz click para ver el código del proyecto"
             >
               GitHub link

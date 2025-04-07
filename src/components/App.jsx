@@ -4,6 +4,7 @@ import Header from "./Header";
 import Footer from "./Footer";
 import Form from "./Form";
 import Preview from "./Preview";
+import localStorage from "../services/localStorage";
 
 //inputs
 
@@ -13,19 +14,41 @@ function App() {
     setAvatar(avatar);
   }; */
 
-  const [projectInfo, setProjectInfo] = useState({
-    photo: "",
-    image: "",
-    name: "Elegant Workspace",
-    slogan: "Diseños exclusivos",
-    desc:
-      "Tiene musho peligro caballo blanco caballo negroorl te voy a borrar el cerito está la cosa muy malar qué dise usteer llevame al sircoo.",
-    repo: "",
-    demo: "",
-    technologies: "React JS - HTML - CSS",
-    autor: "Emmelie Bjôrklund",
-    job: "Full stack Developer",
-  });
+  const [isLinkVisible, setIsLinkVisible] = useState(false);
+  const [urlProject, setUrlProject] = useState({});
+  const [projectInfo, setProjectInfo] = useState(
+    localStorage.get("projectInfo", {
+      photo: "",
+      image: "",
+      name: "Elegant Workspace",
+      slogan: "Diseños exclusivos",
+      desc: "Tiene musho peligro caballo blanco caballo negroorl te voy a borrar el cerito está la cosa muy malar qué dise usteer llevame al sircoo.",
+      repo: "",
+      demo: "",
+      technologies: "React JS - HTML - CSS",
+      autor: "Emmelie Bjôrklund",
+      job: "Full stack Developer",
+    })
+  );
+  localStorage.set("projectInfo", projectInfo);
+
+  function handleClickReset(ev) {
+    ev.preventDefault();
+    localStorage.clear();
+    setProjectInfo({
+      photo: "",
+      image: "",
+      name: "",
+      slogan: "",
+      desc: "",
+      repo: "",
+      demo: "",
+      technologies: "",
+      autor: "",
+      job: "",
+    });
+  }
+
   const handleChangeImageAuthor = (value) => {
     setProjectInfo({
       ...projectInfo,
@@ -93,19 +116,32 @@ function App() {
       job: value,
     });
   };
+
   const handleSubmitProject = () => {
+    const validFields = Object.values(projectInfo).every(
+      (value) => value && value !== ""
+    );
+    if (!validFields) {
+      alert(
+        "Por favor, completa todos los campos antes de enviar el proyecto."
+      );
+      return;
+    }
     fetch("https://dev.adalab.es/api/projectCard", {
       method: "POST",
       headers: {
         "Content-type": "application/json",
-        body: JSON.stringify(projectInfo),
-      }
+      },
+      body: JSON.stringify(projectInfo),
     })
-      .then(res => res.json)
-      .then(data => {
+      .then((res) => res.json())
+      .then((data) => {
         console.log(data);
-      })
-  }
+        setUrlProject(data);
+        setIsLinkVisible(true);
+        alert("¡Proyecto enviado con éxito!");
+      });
+  };
 
   return (
     <>
@@ -121,6 +157,13 @@ function App() {
             <a className="button--link" href="./">
               Ver proyectos
             </a>
+            <button
+              className="button--link"
+              onClick={handleClickReset}
+              type="reset"
+            >
+              Reset
+            </button>
           </section>
 
           <Preview project={projectInfo} />
@@ -136,6 +179,9 @@ function App() {
             onInputUserName={handleChangeUserName}
             onInputUserJob={handleChangeUserJob}
             onSaveProject={handleSubmitProject}
+            urlProject={urlProject}
+            isLinkVisible={isLinkVisible}
+            projectInfo={projectInfo}
           />
         </main>
 

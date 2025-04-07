@@ -124,6 +124,7 @@ fieldset {
 .preview .projectImage {
     width: 100%;
     aspect-ratio: 1 / 1;
+
     img {
         width: 100%;
         height: 100%;
@@ -197,6 +198,7 @@ fieldset {
     height: 75px;
     border-radius: 50%;
     margin-bottom: 0.8rem;
+
     img {
         width: 100%;
         height: 100%;
@@ -436,4 +438,22 @@ fieldset {
 
 .icon__github {
     background-image: url('../images/icons/github.svg');
+}
+
+
+.button-link {
+    color: var(--color-white);
+    font: var(--font-button);
+    cursor: pointer;
+
+}
+
+.button-link:hover {
+    color: var(--color-white-50);
+    text-decoration: underline;
+}
+
+.link-project {
+    text-align: center;
+    padding-bottom: 20px;
 }

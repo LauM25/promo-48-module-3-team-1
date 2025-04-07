@@ -66,6 +66,7 @@ function GetAvatar({ avatar, updateAvatar, text = "Get avatar" }) {
           ref={myFileField}
           style={{ display: "none" }}
           onChange={uploadImage}
+          avatar={avatar}
         />
       </label>
 
