@@ -20,14 +20,14 @@ function App() {
     localStorage.get("projectInfo", {
       photo: "",
       image: "",
-      name: "Elegant Workspace",
-      slogan: "Diseños exclusivos",
-      desc: "Tiene musho peligro caballo blanco caballo negroorl te voy a borrar el cerito está la cosa muy malar qué dise usteer llevame al sircoo.",
+      name: "",
+      slogan: "",
+      desc: "",
       repo: "",
       demo: "",
-      technologies: "React JS - HTML - CSS",
-      autor: "Emmelie Bjôrklund",
-      job: "Full stack Developer",
+      technologies: "",
+      autor: "",
+      job: "",
     })
   );
   localStorage.set("projectInfo", projectInfo);
